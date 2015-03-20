@@ -1,12 +1,11 @@
 using System.Threading;
-using uScoober.IO;
 
 namespace uScoober.Hardware.Motors
 {
     /// <summary>
     /// Class to controll an Electronic Speed Controler (ESC) for Airplanes (NO REVERSE)
     /// </summary>
-    public class BrushlessSpeedController
+    internal class BrushlessSpeedController
     {
         private readonly IPulseWidthModulatedOutput _pwm;
 

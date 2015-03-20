@@ -1,9 +1,9 @@
 ﻿using System;
-using uScoober.IO;
 
 namespace uScoober.Hardware.Input
 {
-    public class PushButton : DisposableBase, IButton
+    public class PushButton : DisposableBase,
+                              IButton
     {
         private readonly IDigitalInput _input;
         private Action _onButtonDown = delegate { };

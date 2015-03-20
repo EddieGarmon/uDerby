@@ -1,9 +1,10 @@
 using Microsoft.SPOT.Hardware;
+using uScoober.Hardware.I2C;
 
-namespace uScoober.IO.I2CBus
+namespace uScoober.Hardware.Spot
 {
-    public class SpotI2CBus : DisposableBase,
-                                II2CBus
+    internal class SpotI2CBus : DisposableBase,
+                              II2CBus
     {
         private readonly I2CDevice _nativeBus;
 
@@ -33,7 +34,9 @@ namespace uScoober.IO.I2CBus
             ThrowIfDisposed();
             lock (_nativeBus) {
                 _nativeBus.Config = config;
-                I2CDevice.I2CTransaction[] actions = { I2CDevice.CreateReadTransaction(readBuffer) };
+                I2CDevice.I2CTransaction[] actions = {
+                    I2CDevice.CreateReadTransaction(readBuffer)
+                };
                 int bytesTransfered = _nativeBus.Execute(actions, timeoutMilliseconds);
                 return (bytesTransfered >= readBuffer.Length);
             }
@@ -43,7 +46,9 @@ namespace uScoober.IO.I2CBus
             ThrowIfDisposed();
             lock (_nativeBus) {
                 _nativeBus.Config = config;
-                I2CDevice.I2CTransaction[] actions = { I2CDevice.CreateWriteTransaction(writeBuffer) };
+                I2CDevice.I2CTransaction[] actions = {
+                    I2CDevice.CreateWriteTransaction(writeBuffer)
+                };
                 int bytesTransfered = _nativeBus.Execute(actions, timeoutMilliseconds);
                 return (bytesTransfered >= writeBuffer.Length);
             }
@@ -53,7 +58,10 @@ namespace uScoober.IO.I2CBus
             ThrowIfDisposed();
             lock (_nativeBus) {
                 _nativeBus.Config = config;
-                I2CDevice.I2CTransaction[] actions = { I2CDevice.CreateWriteTransaction(writeBuffer), I2CDevice.CreateReadTransaction(readBuffer) };
+                I2CDevice.I2CTransaction[] actions = {
+                    I2CDevice.CreateWriteTransaction(writeBuffer),
+                    I2CDevice.CreateReadTransaction(readBuffer)
+                };
                 int bytesTransfered = _nativeBus.Execute(actions, timeoutMilliseconds);
                 return (bytesTransfered >= (writeBuffer.Length + readBuffer.Length));
             }

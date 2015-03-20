@@ -1,10 +1,9 @@
 ﻿using System.Diagnostics;
-using uScoober.IO;
 
 namespace uScoober.Hardware.Light
 {
     [DebuggerDisplay("DigitalLed: {Id} IsOn:{IsOn}")]
-    public class DigitalLed : DisposableBase,
+    internal class DigitalLed : DisposableBase,
                               IDigitalLed
     {
         private readonly IDigitalOutput _output;

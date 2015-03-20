@@ -30,7 +30,7 @@ namespace uDerby
             _speedController = new BrushlessSpeedController(_netduino.PwmOut.D5);
 
             //initialize input listeners
-            _modeSwitch = new SpotDigitalInput(Pins.GPIO_PIN_D1, "mode switch", ResistorMode.PullUp,
+            _modeSwitch = _netduino.DigitalIn.Bind(Pins.GPIO_PIN_D1, "mode switch", ResistorMode.PullUp,
                 InterruptMode.InterruptEdgeBoth, 50);
             _modeSwitch.InvertReading = true;
             _modeSwitch.OnInterupt += (source, state, time) =>
@@ -39,7 +39,7 @@ namespace uDerby
                 _speedController.Stop();
             };
 
-            _triggerLock = new SpotDigitalInput(Pins.GPIO_PIN_D2, "trigger-lock/e-stop", ResistorMode.PullUp,
+            _triggerLock = _netduino.DigitalIn.Bind(Pins.GPIO_PIN_D2, "trigger-lock/e-stop", ResistorMode.PullUp,
                 InterruptMode.InterruptEdgeBoth, 100);
             _triggerLock.InvertReading = true;
             _triggerLock.OnInterupt += (source, state, time) =>
@@ -117,10 +117,10 @@ namespace uDerby
 
             _lightsManager = Task.New(() =>
             {
-                var leftFrontLed = new DigitalLed(new SpotDigitalOutput(Pins.GPIO_PIN_D13, false, "Left Front"));
-                var rightFrontLed = new DigitalLed(new SpotDigitalOutput(Pins.GPIO_PIN_D12, false, "Right Front"));
-                var leftRearLed = new DigitalLed(new SpotDigitalOutput(Pins.GPIO_PIN_D11, false, "Left Rear"));
-                var rightRearLed = new DigitalLed(new SpotDigitalOutput(Pins.GPIO_PIN_D10, false, "Right Rear"));
+                var leftFrontLed = new DigitalLed(_netduino.DigitalOut.Bind(Pins.GPIO_PIN_D13, false, "Left Front"));
+                var rightFrontLed = new DigitalLed(_netduino.DigitalOut.Bind(Pins.GPIO_PIN_D12, false, "Right Front"));
+                var leftRearLed = new DigitalLed(_netduino.DigitalOut.Bind(Pins.GPIO_PIN_D11, false, "Left Rear"));
+                var rightRearLed = new DigitalLed(_netduino.DigitalOut.Bind(Pins.GPIO_PIN_D10, false, "Right Rear"));
                 var random = new Random();
                 int counter1 = 0;
 

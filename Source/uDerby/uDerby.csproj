@@ -36,13 +36,13 @@
     <Compile Include="Car.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="uScoober.Hardware\Boards.NetduinoPlus2-0.13.0\NetduinoPlus2.cs" />
+    <Compile Include="uScoober.Hardware\Boards.NetduinoPlus2-0.14.0\NetduinoPlus2.cs" />
     <Compile Include="uScoober.Hardware\Input.Button-0.5.0\IButton.cs" />
     <Compile Include="uScoober.Hardware\Input.Button-0.5.0\PushButton.cs" />
     <Compile Include="uScoober.Hardware\Light.Led-0.6.0\AnalogLed.cs" />
     <Compile Include="uScoober.Hardware\Light.Led-0.6.0\DigitalLed.cs" />
     <Compile Include="uScoober.Hardware\Light.Led-0.6.0\IDigitalLedExtensions.cs" />
-    <Compile Include="uScoober.Hardware\Motors.BrushlessSpeedController-0.14.0\BrushlessSpeedController.cs" />
+    <Compile Include="uScoober.Hardware\Motors.BrushlessSpeedController-0.15.0\BrushlessSpeedController.cs" />
     <Compile Include="uScoober.Hardware\Spot.Analog-0.16.0\SpotAnalogInput.cs" />
     <Compile Include="uScoober.Hardware\Spot.Digital-0.16.0\SpotDigitalInput.cs" />
     <Compile Include="uScoober.Hardware\Spot.Digital-0.16.0\SpotDigitalOutput.cs" />
